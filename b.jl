@@ -20,6 +20,12 @@ for w in words
     counts[w] = get(counts, w, 0) + 1
 end
 
+t = sort(collect(counts); by = x -> x.second, rev = true)[1:25]
+
+for (k, v) in t
+    println(k, " - ", v)
+end
+
 println("length(words) is $(length(words))")
 
 
