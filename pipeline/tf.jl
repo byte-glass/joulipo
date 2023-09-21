@@ -34,8 +34,10 @@ function frequencies(words)
     f
 end
 
-function sort_frequencies(f)
-    sort(collect(f); by = x -> x.second, rev = true)
+import Base.sort
+
+function sort(frequencies::Dict)
+    sort(collect(frequencies); by = x -> x.second, rev = true)
 end
 
 function print_all(frequencies)
@@ -44,7 +46,7 @@ function print_all(frequencies)
     end
 end
 
-print_all(sort_frequencies(frequencies(remove_stop_words(scan(filter_chars_and_normalize(read_file(ARGS[1]))))))[1:25])
+print_all(sort(frequencies(remove_stop_words(scan(filter_chars_and_normalize(read_file(ARGS[1]))))))[1:25])
 
 
 ### end
